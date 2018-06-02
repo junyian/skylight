@@ -1,0 +1,9 @@
+{
+  "name": "skylight",
+  "version": "0.0.0",
+  "description": "skylight",
+  "main": "app.js",
+  "author": {
+    "name": "junylean"
+  }
+}
