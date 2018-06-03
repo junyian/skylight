@@ -1,0 +1,9 @@
+{
+  "name": "daylight",
+  "version": "0.0.0",
+  "description": "daylight",
+  "scripts": {
+    "start": "nw ./src"
+  },
+  "dependencies": {}
+}
