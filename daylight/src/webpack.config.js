@@ -15,11 +15,11 @@ module.exports = function(env) {
 	};
 
 	var config = {
-		entry: "./sources/myapp.js",
+		entry: "./sources/daylight.js",
 		output: {
 			path: path.join(__dirname, "codebase"),
 			publicPath:"/codebase/",
-			filename: "myapp.js"
+			filename: "daylight.js"
 		},
 		devtool: "inline-source-map",
 		module: {
@@ -47,7 +47,7 @@ module.exports = function(env) {
 			}
 		},
 		plugins: [
-			new ExtractTextPlugin("./myapp.css"),
+			new ExtractTextPlugin("./daylight.css"),
 			new webpack.DefinePlugin({
 				VERSION: `"${pack.version}"`,
 				APPNAME: `"${pack.name}"`,

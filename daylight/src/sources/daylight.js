@@ -1,10 +1,11 @@
 import "./styles/app.css";
 import {JetApp, EmptyRouter, HashRouter } from "webix-jet";
 
-export default class MyApp extends JetApp{
+export default class DaylightApp extends JetApp{
 	constructor(config){
 		const defaults = {
-			id 		: APPNAME,
+            id: APPNAME,
+            name: "Daylight",
 			version : VERSION,
 			router 	: BUILD_AS_MODULE ? EmptyRouter : HashRouter,
 			debug 	: !PRODUCTION,
@@ -16,5 +17,5 @@ export default class MyApp extends JetApp{
 }
 
 if (!BUILD_AS_MODULE){
-	webix.ready(() => new MyApp().render() );
+	webix.ready(() => new DaylightApp().render() );
 }
