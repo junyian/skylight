@@ -3,30 +3,38 @@ import {JetView, plugins} from "webix-jet";
 
 
 export default class TopView extends JetView{
-	config(){
-		var header = {
-			type:"header", template:this.app.config.name
-		};
-
-		var menu = {
-			view:"menu", id:"top:menu", 
-			width:180, layout:"y", select:true,
-			template:"<span class='webix_icon fa-#icon#'></span> #value# ",
-			data:[
-				{ value:"DashBoard", id:"start", icon:"envelope-o" },
-				{ value:"Data",		 id:"data",  icon:"briefcase" }
-			]
-		};
-
+	config() {
+		var menu_data_multi = [
+			{
+				id: "upload", icon: "upload", value: "Upload data", data: [
+					{ id: "uploadxdb", value: "Upload XDB", href: "#!/top/uploadxdb" }]
+			},
+			{ id:"designer", icon:"puzzle-piece", value:"Designer"}];
 		var ui = {
-			type:"line", cols:[
-				{ type:"clean", css:"app-left-panel",
-					padding:10, margin:20, borderless:true, rows: [ header, menu ]},
-				{ rows:[ { height:10}, 
-					{ type:"clean", css:"app-right-panel", padding:4, rows:[
-						{ $subview:true } 
-					]}
-				]}
+			rows: [
+				{
+					view: "toolbar", padding: 3, elements: [
+						{
+							view: "button", type: "icon", icon: "bars", width: 37, align: "left", css: "app_button",
+							click: function () {
+								$$("top:sidebar").toggle();
+							}
+						},
+						{ view: "label", label: this.app.config.name }
+					]
+				},
+				{
+					cols: [
+						{
+							view: "sidebar", id:"top:sidebar", width: 300, data: menu_data_multi, on: {
+								onAfterSelect: function (id) {
+									webix.message("Selected: " + this.getItem(id).value);
+								}
+							}
+						},
+						{ template:"" }
+					]
+				}
 			]
 		};
 
