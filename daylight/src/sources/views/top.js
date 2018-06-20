@@ -5,10 +5,10 @@ import {JetView, plugins} from "webix-jet";
 export default class TopView extends JetView{
 	config() {
 		var menu_data_multi = [
-			{
-				id: "upload", icon: "upload", value: "Upload data", data: [
-					{ id: "uploadxdb", value: "Upload XDB", href: "#!/top/uploadxdb" }]
-			},
+			//{
+			//	id: "upload", icon: "upload", value: "Upload data", data: [
+			//		{ id: "uploadxdb", value: "Upload XDB", href: "#!/top/uploadxdb" }]
+			//},
 			{ id:"designer", icon:"puzzle-piece", value:"Designer"}];
 		var ui = {
 			rows: [
@@ -28,11 +28,12 @@ export default class TopView extends JetView{
 						{
 							view: "sidebar", id:"top:sidebar", width: 300, data: menu_data_multi, on: {
 								onAfterSelect: function (id) {
-									webix.message("Selected: " + this.getItem(id).value);
+									//webix.message("Selected: " + this.getItem(id).value);
+									this.$scope.show("./" + id);
 								}
 							}
 						},
-						{ template:"" }
+						{ $subview: true }
 					]
 				}
 			]
@@ -42,6 +43,6 @@ export default class TopView extends JetView{
 		return ui;
 	}
 	init(){
-		this.use(plugins.Menu, "top:menu");
+		this.use(plugins.Menu, "top:sidebar");
 	}
 }
